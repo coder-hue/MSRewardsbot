@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Microsoft Rewards Bot",
-  "version": "2.24.1.2",
+  "version": "1.0.1.0 Vb2",
   "icons": {
     "16": "img/bingRwLogo@1x.png",
     "24": "img/bingRwLogo@1.5x.png",
@@ -12,34 +12,27 @@
   "description": "A Chrome extension for Microsoft Rewards that automatically clears PC, mobile and EDGE search quests and displays daily point countdown.",
 
   "background": {
-    "persistent": true,
-    "scripts": [
-      "status/DailyQuest.js",
-      "status/DailyRewardStatus.js",
-      "quest/searchQuest.js",
-      "quest/quizDailyQuest.js",
-      "googleTrend.js",
-      "utility.js",
-      "badge.js",
-      "exception.js",
-      "background.js",
-      "test.js"
-    ]
+    "background": { "service_worker": "backgroundv3.js", "type": "module" },
+    "minimum_chrome_version": "92"
   },
 
-  "browser_action": {
+  "action": {
     "default_title": "Microsoft Rewards Bot",
     "default_popup": "popup/popup.html"
   },
 
-  "permissions": ["https://www.bing.com/search?q=*",
-    "https://trends.google.com/trends/*",
-    "https://account.microsoft.com/rewards/*",
-    "https://rewards.microsoft.com/*",
-    "https://rewards.bing.com/*",
+  "permissions": [
     "webRequest",
     "webRequestBlocking",
     "storage",
     "notifications"
+  ],
+
+  "host_permissions": [
+    "https://www.bing.com/search?q=*",
+    "https://trends.google.com/trends/*",
+    "https://account.microsoft.com/rewards/*",
+    "https://rewards.microsoft.com/*",
+    "https://rewards.bing.com/*"
   ]
 }
